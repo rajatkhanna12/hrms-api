@@ -39,6 +39,21 @@ namespace HRMS.Core.Repository
                 return MethodsGen<WorkDiary>.GetObject(true, workDiary, ex.Message);
             }
         }
+        public async Task<List<WorkDiary>> GetTasks()
+        {
+
+            try
+            {
+                var workDiaries = await _dataContext.WorkDiaries.ToListAsync();
+
+                return workDiaries;
+            }
+            catch (Exception ex)
+            {
+                //return MethodsGen<WorkDiary>.GetObject(true, workDiary, ex.Message);
+            }
+            return null;
+        }
 
 
         public async Task<JsonResultModel<WorkDiary>> UpdateTask(int taskId, int status)

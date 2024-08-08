@@ -28,6 +28,22 @@ namespace HRMS.Controllers
             return Json(await _authService.SaveUser(registerUser)) ;
         }
 
+        [HttpGet]
+        //[Authorize(Roles = "Administrator")]
+        [Route("/GetUsers")]
+
+        public async Task<JsonResult> GetUsers()
+        {
+            return Json(await _authService.GetUsers());
+        }
+        [HttpGet]
+        [Route("/GetRoles")]
+
+        public async Task<JsonResult> GetRoles()
+        {
+            return Json(await _authService.GetRoles());
+        }
+
         [HttpPost]
         [Route("/Login")]
         [AllowAnonymous]

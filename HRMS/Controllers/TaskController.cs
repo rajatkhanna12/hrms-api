@@ -22,6 +22,13 @@ namespace HRMS.Controllers
         {
             return Json(await _taskService.CreateTask(model));
         }
+        [HttpGet]
+        [Route("GetTasks")]
+
+        public async Task<JsonResult> GetTasks()
+        {
+            return Json(await _taskService.GetTasks());
+        }
 
         [HttpPost]
         [Route("UpdateTask")]

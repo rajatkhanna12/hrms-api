@@ -66,6 +66,36 @@ namespace HRMS.Core.Repository
             }
 
         }
+        public async Task<List<Users>> GetUsers()
+        {
+
+            try
+            {
+                var users = _dataContext.Users.Where(x=>x.RoleId != 1).ToList();
+                return users;
+            }
+            catch (Exception ex)
+            {
+                //return MethodsGen<SaveUserDto>.GetObject(true, "", ex.Message);
+
+            }
+            return null;
+        }
+        public async Task<List<UserRole>> GetRoles()
+        {
+
+            try
+            {
+                var roles = _dataContext.UserRoles.ToList();
+                return roles;
+            }
+            catch (Exception ex)
+            {
+                //return MethodsGen<SaveUserDto>.GetObject(true, "", ex.Message);
+
+            }
+            return null;
+        }
 
         public JsonResultModel<SaveUserDto> ValidateUser(SaveUserDto user)
         {
